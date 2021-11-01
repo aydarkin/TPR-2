@@ -74,8 +74,13 @@ namespace TPR_2
             var form = new InputForm(type, selected.Tag as InputResult);
             form.ShowDialog();
 
-            events.Add(form.Result);
-            SyncTree();
+            if (!string.IsNullOrEmpty(form.Result.Name))
+            {
+                events.Add(form.Result);
+                SyncTree();
+            }
+            else
+                InputResult.counter--;
         }
 
         // отобразить "дерево" событий в контроле дерева
