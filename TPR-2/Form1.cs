@@ -20,7 +20,7 @@ namespace TPR_2
             InitializeComponent();
 
             // настраиваем корневое событие
-            cbRootType.SelectedIndex = 0; // AND
+            cbRootType.SelectedIndex = 0; // И
             events.Add(new InputResult(TypeElem.And)
             {
                 Name = tbRootName.Text,
