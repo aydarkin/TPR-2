@@ -30,7 +30,11 @@ namespace TPR_2
             }
 
             if (parent != null)
-                Result.Parent = parent;
+            {
+                Result.Parent = parent.Type == TypeElem.Init 
+                    ? parent.Parent
+                    : parent;
+            }  
         }
 
         private void button1_Click(object sender, EventArgs e)

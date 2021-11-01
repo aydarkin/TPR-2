@@ -51,6 +51,7 @@
             this.lblOcenka = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.nudCost = new System.Windows.Forms.NumericUpDown();
+            this.lblProb = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCost)).BeginInit();
@@ -61,10 +62,9 @@
             this.treeView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.treeView.Location = new System.Drawing.Point(16, 108);
-            this.treeView.Margin = new System.Windows.Forms.Padding(4);
+            this.treeView.Location = new System.Drawing.Point(12, 88);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(528, 491);
+            this.treeView.Size = new System.Drawing.Size(397, 400);
             this.treeView.TabIndex = 0;
             // 
             // groupBox1
@@ -72,11 +72,9 @@
             this.groupBox1.Controls.Add(this.rbProb);
             this.groupBox1.Controls.Add(this.rbOr);
             this.groupBox1.Controls.Add(this.rbAnd);
-            this.groupBox1.Location = new System.Drawing.Point(16, 42);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(283, 59);
+            this.groupBox1.Size = new System.Drawing.Size(212, 48);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "События";
@@ -85,10 +83,9 @@
             // 
             this.rbProb.AutoSize = true;
             this.rbProb.Checked = true;
-            this.rbProb.Location = new System.Drawing.Point(168, 23);
-            this.rbProb.Margin = new System.Windows.Forms.Padding(4);
+            this.rbProb.Location = new System.Drawing.Point(126, 19);
             this.rbProb.Name = "rbProb";
-            this.rbProb.Size = new System.Drawing.Size(98, 21);
+            this.rbProb.Size = new System.Drawing.Size(78, 17);
             this.rbProb.TabIndex = 2;
             this.rbProb.TabStop = true;
             this.rbProb.Text = "Иниц. соб.";
@@ -97,10 +94,9 @@
             // rbOr
             // 
             this.rbOr.AutoSize = true;
-            this.rbOr.Location = new System.Drawing.Point(81, 23);
-            this.rbOr.Margin = new System.Windows.Forms.Padding(4);
+            this.rbOr.Location = new System.Drawing.Point(61, 19);
             this.rbOr.Name = "rbOr";
-            this.rbOr.Size = new System.Drawing.Size(59, 21);
+            this.rbOr.Size = new System.Drawing.Size(49, 17);
             this.rbOr.TabIndex = 1;
             this.rbOr.Text = "ИЛИ";
             this.rbOr.UseVisualStyleBackColor = true;
@@ -108,20 +104,18 @@
             // rbAnd
             // 
             this.rbAnd.AutoSize = true;
-            this.rbAnd.Location = new System.Drawing.Point(8, 23);
-            this.rbAnd.Margin = new System.Windows.Forms.Padding(4);
+            this.rbAnd.Location = new System.Drawing.Point(6, 19);
             this.rbAnd.Name = "rbAnd";
-            this.rbAnd.Size = new System.Drawing.Size(39, 21);
+            this.rbAnd.Size = new System.Drawing.Size(33, 17);
             this.rbAnd.TabIndex = 0;
             this.rbAnd.Text = "И";
             this.rbAnd.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(307, 62);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(230, 50);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 28);
+            this.button1.Size = new System.Drawing.Size(85, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -129,10 +123,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(428, 62);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(321, 50);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 28);
+            this.button2.Size = new System.Drawing.Size(88, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "Удалить";
             this.button2.UseVisualStyleBackColor = true;
@@ -141,10 +134,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(608, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(456, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 17);
+            this.label1.Size = new System.Drawing.Size(158, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Название конечного события";
             // 
@@ -152,10 +144,9 @@
             // 
             this.tbRootName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbRootName.Location = new System.Drawing.Point(612, 65);
-            this.tbRootName.Margin = new System.Windows.Forms.Padding(4);
+            this.tbRootName.Location = new System.Drawing.Point(459, 53);
             this.tbRootName.Name = "tbRootName";
-            this.tbRootName.Size = new System.Drawing.Size(377, 22);
+            this.tbRootName.Size = new System.Drawing.Size(284, 20);
             this.tbRootName.TabIndex = 4;
             this.tbRootName.Text = "Конечное событие";
             this.tbRootName.TextChanged += new System.EventHandler(this.tbRootName_TextChanged);
@@ -167,10 +158,9 @@
             this.cbRootType.Items.AddRange(new object[] {
             "И",
             "ИЛИ"});
-            this.cbRootType.Location = new System.Drawing.Point(611, 95);
-            this.cbRootType.Margin = new System.Windows.Forms.Padding(4);
+            this.cbRootType.Location = new System.Drawing.Point(458, 77);
             this.cbRootType.Name = "cbRootType";
-            this.cbRootType.Size = new System.Drawing.Size(160, 24);
+            this.cbRootType.Size = new System.Drawing.Size(121, 21);
             this.cbRootType.TabIndex = 6;
             this.cbRootType.SelectedIndexChanged += new System.EventHandler(this.cbRootType_SelectedIndexChanged);
             // 
@@ -178,10 +168,9 @@
             // 
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalc.Location = new System.Drawing.Point(612, 199);
-            this.btnCalc.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCalc.Location = new System.Drawing.Point(459, 162);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(379, 28);
+            this.btnCalc.Size = new System.Drawing.Size(284, 23);
             this.btnCalc.TabIndex = 7;
             this.btnCalc.Text = "Расчет";
             this.btnCalc.UseVisualStyleBackColor = true;
@@ -191,24 +180,24 @@
             // 
             this.tbFAL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFAL.Location = new System.Drawing.Point(612, 269);
-            this.tbFAL.Margin = new System.Windows.Forms.Padding(4);
+            this.tbFAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbFAL.Location = new System.Drawing.Point(459, 219);
             this.tbFAL.Multiline = true;
             this.tbFAL.Name = "tbFAL";
             this.tbFAL.ReadOnly = true;
-            this.tbFAL.Size = new System.Drawing.Size(377, 112);
+            this.tbFAL.Size = new System.Drawing.Size(284, 92);
             this.tbFAL.TabIndex = 8;
             // 
             // tbCalc
             // 
             this.tbCalc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbCalc.Location = new System.Drawing.Point(612, 420);
-            this.tbCalc.Margin = new System.Windows.Forms.Padding(4);
+            this.tbCalc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbCalc.Location = new System.Drawing.Point(459, 341);
             this.tbCalc.Multiline = true;
             this.tbCalc.Name = "tbCalc";
             this.tbCalc.ReadOnly = true;
-            this.tbCalc.Size = new System.Drawing.Size(377, 115);
+            this.tbCalc.Size = new System.Drawing.Size(284, 94);
             this.tbCalc.TabIndex = 8;
             // 
             // menuStrip1
@@ -219,21 +208,22 @@
             this.экспортToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1007, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // импортToolStripMenuItem
             // 
             this.импортToolStripMenuItem.Name = "импортToolStripMenuItem";
-            this.импортToolStripMenuItem.Size = new System.Drawing.Size(81, 26);
+            this.импортToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.импортToolStripMenuItem.Text = "Открыть";
             this.импортToolStripMenuItem.Click += new System.EventHandler(this.импортToolStripMenuItem_Click);
             // 
             // экспортToolStripMenuItem
             // 
             this.экспортToolStripMenuItem.Name = "экспортToolStripMenuItem";
-            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(97, 26);
+            this.экспортToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
             this.экспортToolStripMenuItem.Text = "Сохранить";
             this.экспортToolStripMenuItem.Click += new System.EventHandler(this.экспортToolStripMenuItem_Click);
             // 
@@ -249,59 +239,75 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(609, 248);
+            this.label2.Location = new System.Drawing.Point(457, 202);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(174, 17);
+            this.label2.Size = new System.Drawing.Size(137, 13);
             this.label2.TabIndex = 10;
             this.label2.Text = "Функция алгебры логики";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(612, 396);
+            this.label3.Location = new System.Drawing.Point(459, 322);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(171, 17);
+            this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "Вероятностная функция";
             // 
             // lblOcenka
             // 
             this.lblOcenka.AutoSize = true;
-            this.lblOcenka.Location = new System.Drawing.Point(612, 582);
+            this.lblOcenka.Location = new System.Drawing.Point(459, 473);
+            this.lblOcenka.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOcenka.Name = "lblOcenka";
-            this.lblOcenka.Size = new System.Drawing.Size(113, 17);
+            this.lblOcenka.Size = new System.Drawing.Size(87, 13);
             this.lblOcenka.TabIndex = 12;
             this.lblOcenka.Text = "Оценка риска: -";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(609, 137);
+            this.label5.Location = new System.Drawing.Point(457, 111);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.Size = new System.Drawing.Size(96, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Стоимость";
+            this.label5.Text = "Величина ущерба";
             // 
             // nudCost
             // 
             this.nudCost.DecimalPlaces = 2;
-            this.nudCost.Location = new System.Drawing.Point(611, 157);
+            this.nudCost.Location = new System.Drawing.Point(458, 128);
+            this.nudCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudCost.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
             this.nudCost.Name = "nudCost";
-            this.nudCost.Size = new System.Drawing.Size(160, 22);
+            this.nudCost.Size = new System.Drawing.Size(120, 20);
             this.nudCost.TabIndex = 13;
+            // 
+            // lblProb
+            // 
+            this.lblProb.AutoSize = true;
+            this.lblProb.Location = new System.Drawing.Point(459, 451);
+            this.lblProb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProb.Name = "lblProb";
+            this.lblProb.Size = new System.Drawing.Size(114, 13);
+            this.lblProb.TabIndex = 12;
+            this.lblProb.Text = "Вероятность риска: -";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 615);
+            this.ClientSize = new System.Drawing.Size(755, 500);
             this.Controls.Add(this.nudCost);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblProb);
             this.Controls.Add(this.lblOcenka);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -317,7 +323,6 @@
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Логико-вероятностный метод";
             this.groupBox1.ResumeLayout(false);
@@ -355,6 +360,7 @@
         private System.Windows.Forms.Label lblOcenka;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown nudCost;
+        private System.Windows.Forms.Label lblProb;
     }
 }
 

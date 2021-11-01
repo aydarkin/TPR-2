@@ -18,13 +18,8 @@ namespace TPR_2
         public InputResult(TypeElem type)
         {
             Type = type;
-
-            if (type == TypeElem.Init)
-            {
-                counter++;
-                Id = counter;
-            }
-            
+            Id = counter;
+            counter++;
         }
 
         public int? Id;
@@ -34,6 +29,6 @@ namespace TPR_2
         public TypeElem Type { get; set; }
         public InputResult Parent { get; set; }
 
-        static int counter = 0;
+        public static int counter = 0;
     }
 }

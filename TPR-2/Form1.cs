@@ -13,6 +13,7 @@ namespace TPR_2
 {
     public partial class Form1 : Form
     {
+        // "дерево" событий
         List<InputResult> events = new List<InputResult>();
 
         public Form1()
@@ -21,6 +22,12 @@ namespace TPR_2
 
             // настраиваем корневое событие
             cbRootType.SelectedIndex = 0; // И
+            InitRoot();
+        }
+
+        private void InitRoot()
+        {
+            InputResult.counter = 0;
             events.Add(new InputResult(TypeElem.And)
             {
                 Name = tbRootName.Text,
@@ -35,12 +42,16 @@ namespace TPR_2
             if (treeView.SelectedNode != null)
             {
                 RemoveRecursive(treeView.SelectedNode.Tag as InputResult);
-                
                 SyncTree();
-                // treeView.Nodes.Remove(treeView.SelectedNode);
+
+                if (events.Count == 0)
+                {
+                    InitRoot();
+                }
             }
         }
 
+        // удаление узла
         private void RemoveRecursive(InputResult forDelete)
         {
             events.Remove(forDelete);
@@ -67,6 +78,7 @@ namespace TPR_2
             SyncTree();
         }
 
+        // отобразить "дерево" событий в контроле дерева
         private void SyncTree()
         {
             treeView.Nodes.Clear();
@@ -77,20 +89,20 @@ namespace TPR_2
                 switch (e.Type)
                 {
                     case TypeElem.And:
-                        prefix = "[И]";
+                        prefix = "[И] ";
                         break;
                     case TypeElem.Or:
-                        prefix = "[ИЛИ]";
+                        prefix = "[ИЛИ] ";
                         break;
                     case TypeElem.Init:
-                        postfix = $" (x{e.Id}, p = {e.Probably})";
+                        postfix = $", p = {e.Probably}";
                         break;
                 }
 
                 var node = new TreeNode()
                 {
                     Name = e.Name,
-                    Text = $"{prefix} {e.Name}{postfix}",
+                    Text = $"{prefix}{e.Name} (X{e.Id}{postfix})",
                     Tag = e
                 };
 
@@ -107,6 +119,7 @@ namespace TPR_2
             treeView.ExpandAll();
         }
 
+        // при изменении типа конечного события (И, ИЛИ)
         private void cbRootType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (events.Count > 0)
@@ -116,6 +129,7 @@ namespace TPR_2
             }
         }
 
+        // при изменении названия конечного события
         private void tbRootName_TextChanged(object sender, EventArgs e)
         {
             if (events.Count > 0)
@@ -125,6 +139,7 @@ namespace TPR_2
             }
         }
 
+        // Расчет ФАЛ и вероятностной функции
         private void btnCalc_Click(object sender, EventArgs e)
         {
             if (Check())
@@ -138,14 +153,37 @@ namespace TPR_2
                     var kon = new List<string>();
                     for (int j = 0; j < table[i].Count; j++)
                     {
-                        kon.Add($"x{table[i][j].Id}");
+                        kon.Add($"X{table[i][j].Id}");
                     }
-                    diz.Add($"({String.Join("/\\", kon)})");
+                    diz.Add($"({String.Join("∩", kon)})");
                 }
-                tbFAL.Text = String.Join("U" ,diz);
+                tbFAL.Text = String.Join("U", diz);
+
+                // Вероятностная функция
+                var muls = new List<string>();
+                muls.Add("1-(");
+                for (int i = 0; i < table.Count; i++)
+                {
+                    var mul = new List<string>();
+                    for (int j = 0; j < table[i].Count; j++)
+                    {
+                        mul.Add($"X{table[i][j].Id}");
+                    }
+                    muls.Add($"(1-{String.Join("*", mul)})");
+                }
+                muls.Add(")");
+                tbCalc.Text = String.Join("", muls);
+
+                var probably = table.Sum(row => row.Select(elem => elem.Probably).Aggregate((acc, prob) => acc * prob));
+                lblProb.Text = $"Вероятность риска: {probably}";
+
+                var riskValue = probably * Convert.ToDouble(nudCost.Value);
+                lblOcenka.Text = $"Оценка риска: {riskValue}";
             }
         }
 
+        // Функция алгебры логики
+        // модель представления СДНФ
         private List<List<InputResult>> GetFAL(TreeNode node)
         {
             var res = node.Tag as InputResult;
@@ -189,6 +227,7 @@ namespace TPR_2
             return list;
         }
 
+        // декартово произведение матриц
         private void DecartMul(List<List<List<InputResult>>> table, List<InputResult> currentSet, int column, List<List<InputResult>> result)
         {
             if (table.Count == column)
@@ -215,7 +254,7 @@ namespace TPR_2
                     var firstChild = events.Find((ev) => ev.Parent?.Name == events[i].Name);
                     if (firstChild == null)
                     {
-                        MessageBox.Show($"У промежуточного события \"{events[i].Name}\" нет дочерних");
+                        MessageBox.Show($"У промежуточного события \"{events[i].Name}\" нет инициирующих");
                         return false;
                     }
                 }
@@ -231,6 +270,7 @@ namespace TPR_2
                 using (var sr = new StreamReader(ofd.FileName))
                 {
                     events.Clear();
+                    nudCost.Value = Convert.ToDecimal(sr.ReadLine());
                     var count = Convert.ToInt32(sr.ReadLine());
 
                     TypeElem type;
@@ -243,7 +283,6 @@ namespace TPR_2
                         idText = sr.ReadLine();
                         parentText = sr.ReadLine();
                         probablyText = sr.ReadLine();
-
 
                         switch (typeText)
                         {
@@ -258,14 +297,21 @@ namespace TPR_2
                                 break;
                         }
 
+                        // для конечного события
+                        if (i == 0)
+                        {
+                            cbRootType.SelectedIndex = type == TypeElem.And ? 0 : 1;
+                            tbRootName.Text = name;
+                        }
+
                         parentNames.Add(parentText);
 
                         var res = new InputResult(type) { Name = name };
+                        res.Id = Convert.ToInt32(idText);
 
                         if (type == TypeElem.Init)
                         {
                             res.Probably = Convert.ToDouble(probablyText);
-                            res.Id = Convert.ToInt32(idText);
                         }
 
                         events.Add(res);
@@ -275,7 +321,7 @@ namespace TPR_2
                     {
                         events[i].Parent = string.IsNullOrEmpty(parentNames[i])
                                     ? null
-                                    : events.Find(x => x.Name == parentNames[i]);
+                                    : events.Find(x => x.Id == Convert.ToInt32(parentNames[i]));
                     }
                 }
 
@@ -289,6 +335,7 @@ namespace TPR_2
             {
                 using (var sw = new StreamWriter(sfd.FileName))
                 {
+                    sw.WriteLine(nudCost.Value);
                     sw.WriteLine(events.Count);
 
                     string typeText;
@@ -310,7 +357,7 @@ namespace TPR_2
                         sw.WriteLine(typeText);
                         sw.WriteLine(ev.Name);
                         sw.WriteLine(ev.Id);
-                        sw.WriteLine(ev.Parent?.Name ?? "");
+                        sw.WriteLine(ev.Parent?.Id);
                         sw.WriteLine(ev.Probably);
                     });
                 }
