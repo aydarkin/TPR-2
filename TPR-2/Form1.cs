@@ -363,5 +363,22 @@ namespace TPR_2
                 }
             }
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var selected = treeView.SelectedNode;
+
+            var form = new InputForm(selected.Tag as InputResult);
+            form.ShowDialog();
+            SyncTree();
+        }
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            var isRoot = treeView.SelectedNode.Tag == events[0];
+
+            btnEdit.Enabled = !isRoot;
+            btnDelete.Enabled = !isRoot;
+        }
     }
 }

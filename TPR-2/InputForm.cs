@@ -16,6 +16,7 @@ namespace TPR_2
 
         private TypeElem _type;
 
+        // конструктор для создания
         public InputForm(TypeElem type, InputResult parent)
         {
             InitializeComponent();
@@ -35,6 +36,25 @@ namespace TPR_2
                     ? parent.Parent
                     : parent;
             }  
+        }
+
+        // конструктор для редактирования
+        public InputForm(InputResult editing)
+        {
+            InitializeComponent();
+
+            Result = editing;
+            textBox1.Text = editing.Name;
+            _type = editing.Type;
+
+            if (editing.Type != TypeElem.Init)
+            {
+                label2.Visible = false;
+                numericUpDown1.Visible = false;
+            } else
+            {
+                numericUpDown1.Value = Convert.ToDecimal(editing.Probably);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
