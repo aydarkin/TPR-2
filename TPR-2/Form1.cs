@@ -99,9 +99,11 @@ namespace TPR_2
                     case TypeElem.Or:
                         prefix = "[ИЛИ] ";
                         break;
-                    case TypeElem.Init:
-                        postfix = $", p = {e.Probably}";
-                        break;
+                }
+
+                if (e.Probably != null)
+                {
+                    postfix = $", p = {e.Probably}";
                 }
 
                 var node = new TreeNode()
@@ -144,11 +146,38 @@ namespace TPR_2
             }
         }
 
+        private double? SetProbRecursive(InputResult node)
+        {
+            if (node.Type == TypeElem.Init)
+            {
+                return node.Probably;
+            }
+
+            var childs = events.FindAll((ev) => ev.Parent?.Name == node.Name).ToList();
+
+            double? sum = node.Type == TypeElem.And ? 1 : 0;
+
+            for (int i = 0; i < childs.Count; i++)
+            {
+                if (node.Type == TypeElem.And)
+                    sum *= SetProbRecursive(childs[i]);
+                else
+                    sum += SetProbRecursive(childs[i]);
+            }
+
+            node.Probably = sum;
+            return sum;
+        }
+
         // Расчет ФАЛ и вероятностной функции
         private void btnCalc_Click(object sender, EventArgs e)
         {
             if (Check())
             {
+                SetProbRecursive(treeView.Nodes[0].Tag as InputResult);
+                SyncTree();
+
+
                 // ФАЛ
                 var table = GetFAL(treeView.Nodes[0]);
 
